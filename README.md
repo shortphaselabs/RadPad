@@ -12,9 +12,9 @@ Enter the RadPad. By modifying the calculations which generate the Shifts and pl
 To apply the RadPad Protocol: (See the Python code for a simpler explanation.)
   1) Determine P, a prime number which is 1 greater than the total number of characters in the character space. Modify the character space or find a more suitable prime if necesary.
   2) Determine R, a primitive root of P. Table provided below.
-  3) Private Keys, as defined by the original DHKE, are found by independently selecting 2 numbers from 1 to the total number of characters in the character space by truly random means and multiplying the results.
-  4) Compute Public Keys as defined by the original DHKE.ing that by the other party's Public Key, and applying P as the Modulus.
-  5) Compute the Shift by raising R to the power of your Private Key, multiply
+  3) Private Keys, as defined by the original DHKE, are found by independently selecting 2 numbers from 1 to the total number of characters in the character space by truly random means and adding the results.
+  4) Compute Public Keys as defined by the original DHKE.
+  5) Compute the Shift by raising R to the power of your Private Key, multiplying that by the other party's Public Key, and applying P as the Modulus.
   
 The RadPad relies not on massive Primes like the DHKE but in the equal probability of all outcomes of a given length. Message encryption and decryption requires Public Keys which require Private Keys. Every possible combination of Private Key selection is equally likely. Every Public Key possible is equally likely. A given Public Key has a probability of tracing back to the Private Key which generated it equal to 1/length of characters in the character space squared but it is impossible to know if this guess is correct since all outcomes are equally likely. Every Shift possible is equally likely. Finally, every possible encrypted character is equally likely and has no impact on the other character. Simply put, any message of a given length is equally likely to be any other message of a given length it is impossible to know which is correct without a correct Private Key.
 

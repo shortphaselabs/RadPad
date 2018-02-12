@@ -1,12 +1,12 @@
 #RadPad protocol applied to HexaDecimal character space
 #P=1+16 characters in the Hexadecimal character space
-#R= any Primitive Root of P
+#R=any Primitive Root of P
 #Lowercase values must never be shared but capital values are safe to share
 #x represents the first party, y represents the second
 #x=Private, X=Public, sx=Shift. Same applies to y, Y, and sy
 
-P= 7
-R= 5
+P= 17
+R= 10
 for x1 in range(1, P):
   for x2 in range(1,P):
     for y1 in range(1,P):
@@ -15,6 +15,6 @@ for x1 in range(1, P):
         y=(y1+y2)
       X=((R**x)%P)
       Y=((R**y)%P)
-      sx=(((R**x)*Y)%P)
-      sy=(((R**y)*X)%P)
+      sx=((Y**x)%P)#this is the crux of the problem. Since Y and x are both variable, manipulation for equal distribution is required.
+      sy=((X**y)%P)#this is the crux of the problem. Since X and y are both variable, manipulation for equal distribution is required.
       print(sx, sy)
